@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^2.1.0",
+    "csv-loader": "^3.0.2",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "xml-loader": "^1.2.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch",
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
-    "server": "node server.js"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -20,22 +31,5 @@
   "bugs": {
     "url": "https://github.com/1620165757/webpack_doc/issues"
   },
-  "homepage": "https://github.com/1620165757/webpack_doc#readme",
-  "devDependencies": {
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^1.0.0",
-    "csv-loader": "^3.0.2",
-    "express": "^4.16.3",
-    "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-middleware": "^3.1.3",
-    "webpack-dev-server": "^3.1.4",
-    "xml-loader": "^1.2.1"
-  },
-  "dependencies": {
-    "lodash": "^4.17.10"
-  }
+  "homepage": "https://github.com/1620165757/webpack_doc#readme"
 }
