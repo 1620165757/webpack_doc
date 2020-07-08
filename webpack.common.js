@@ -1,40 +1,33 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: {
-    app: './src/index.js',
-    another: './src/another-module.js'
+    index: './src/index.js',
+    // another: './src/another-module.js',
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'Production'
-    }),
+    new HTMLWebpackPlugin({
+      title: 'Code Splitting'
+    })
   ],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   optimization: {
+    usedExports: true,
+    minimize: true,
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`,
+    },
     splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
-    }
+      chunks: 'all',
+      minSize:100,
+      name: true
+    },
   },
-  module: {
-    rules: [
-      {
-        test: /\.css/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
-  }
 };

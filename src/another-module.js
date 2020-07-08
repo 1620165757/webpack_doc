@@ -1,2 +1,3 @@
-import _ from 'lodash';
-console.log('1111111111');
+// import _ from 'lodash';
+import react from 'react'
+
