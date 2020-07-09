@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import trim from 'lodash/trim';
 import react from 'react'
 
 
