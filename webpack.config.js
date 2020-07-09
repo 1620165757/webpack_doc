@@ -28,8 +28,9 @@ module.exports = {
   ],
   optimization: {
     minimize: true,
+    usedExports:true,
     runtimeChunk: {
-      name: 'manifest'
+      name: entrypoint => `runtime-${entrypoint.name}`,
     },
     splitChunks: {
       chunks: 'all'
