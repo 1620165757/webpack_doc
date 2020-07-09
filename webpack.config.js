@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    // chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   devtool: 'inline-source-map',
@@ -28,10 +28,10 @@ module.exports = {
   ],
   optimization: {
     minimize: true,
-    usedExports:true,
-    runtimeChunk: {
-      name: entrypoint => `runtime-${entrypoint.name}`,
-    },
+    // usedExports:true,
+    // runtimeChunk: {
+    //   name: entrypoint => `runtime-${entrypoint.name}`,
+    // },
     splitChunks: {
       chunks: 'all'
     }
