@@ -23,8 +23,8 @@ module.exports = {
       title: 'Output Management'
     }),
     new CleanWebpackPlugin(['dist']),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    // new webpack.NamedModulesPlugin(),
+    // new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
     minimize: true,
