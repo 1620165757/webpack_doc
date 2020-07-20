@@ -1,5 +1,9 @@
+import test from "./test.ts";
+
 function component() {
-  var btn = document.createElement('button');
+
+  console.log('test', test);
+  const btn = document.createElement('button');
 
   btn.innerHTML = 'stop work';
 

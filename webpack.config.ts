@@ -1,10 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
-const WorkboxPlugin = require('workbox-webpack-plugin');
+import * as webpack from 'webpack';
 
-module.exports = {
+const config: webpack.Configuration = {
   entry: './src/index.js',
   output: {
     filename: '[name].bundle.js',
@@ -15,14 +14,10 @@ module.exports = {
       title: '渐进式网络应用程序'
     }),
     new CleanWebpackPlugin(['dist']),
-    new WorkboxPlugin.GenerateSW({
-      // 这些选项帮助快速启用 ServiceWorkers
-      // 不允许遗留任何“旧的” ServiceWorkers
-      clientsClaim: true,
-      skipWaiting: true
-    }),
     new webpack.ProvidePlugin({
       join: ['lodash', 'join']
     })
   ],
 };
+
+export default config
