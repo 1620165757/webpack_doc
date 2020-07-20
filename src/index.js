@@ -1,12 +1,25 @@
+console.log('serviceWorker','serviceWorker' in navigator);
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then(registration => {
+      console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed: ', registrationError);
+    });
+  });
+}
+
 function component() {
-  let element = document.createElement('div');
+  var btn = document.createElement('button');
 
-  element.innerHTML = join(['Hello', 'webpack'], ' ');
+  btn.innerHTML = 'stop work';
+  btn.onclick = function () {
+    navigator.serviceWorker.getRegistration('/service-worker.js').then(registration => {
+      registration.unregister();
+    });
+  };
 
-  // 假设我们处于 `window` 上下文
-  this.alert('Hmmm, this probably isn\'t a great idea...');
-
-  return element;
+  return btn;
 }
 
 document.body.appendChild(component());
