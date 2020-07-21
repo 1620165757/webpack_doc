@@ -4,15 +4,23 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.js',
-  ],
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+  mode: 'development',
+  entry: {
+    index: './src/index.js',
+    // test: './src/test.ts'
   },
+  devtool: 'cheap-module-source-map',
+  output: {
+    filename: '[name].filename.[chunkhash].js',
+    chunkFilename: '[name].chunkFilename.[chunkhash].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  // module: {
+  //   rules: [{
+  //     test: /\.css$/,
+  //     use: ['style-loader', 'css-loader']
+  //   }]
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       title: '渐进式网络应用程序'
@@ -22,6 +30,14 @@ const config: webpack.Configuration = {
     //   join: ['lodash', 'join']
     // })
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`,
+    },
+  }
 };
 
 export default config
