@@ -1,12 +1,13 @@
-// import test from "./test.ts";
-import _ from 'lodash'
-// import './test.css'
+// import _ from 'lodash'
+import './other/css/test.css';
+import test from "otherJs/test";
 
 function component() {
-
-  console.error('test');
+  const a = null;
+  console.log(a?.b?.c);
+  console.log(test);
   const btn = document.createElement('button');
-  import('./test.ts').then();
+  // import('./test.ts').then();
 
   btn.innerHTML = 'stop work1111';
 
