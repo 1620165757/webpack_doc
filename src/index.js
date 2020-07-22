@@ -1,11 +1,10 @@
 // import _ from 'lodash'
 import './other/css/test.css';
+import {name} from 'webpackTest';
 import test from "otherJs/test";
 
 function component() {
-  const a = null;
-  console.log(a?.b?.c);
-  console.log(test);
+  console.log('name',name);
   const btn = document.createElement('button');
   // import('./test.ts').then();
 

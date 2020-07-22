@@ -64,6 +64,8 @@ const config: webpack.Configuration = {
     descriptionFiles: ['package.json'],
     enforceExtension: false,
     extensions: ['.wasm', '.mjs', '.js', '.json', '.ts'],
+    mainFields: ['browser', 'module', 'main','webpackMain'],
+    // mainFiles: ['index.js','init.js']
     modules: ['node_modules']
   }
   // optimization: {
