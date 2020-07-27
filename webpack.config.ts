@@ -55,7 +55,8 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '渐进式网络应用程序'
+      title: '渐进式网络应用程序',
+      template: './public/index.html',
     }),
     new CleanWebpackPlugin(['dist']),
     // new BundleAnalyzerPlugin()
@@ -70,6 +71,7 @@ const config: webpack.Configuration = {
     mainFields: ['browser', 'module', 'main', 'webpackMain'],
     modules: ['node_modules']
   },
+  externals: 'echarts',
   optimization: {
     //是否启用TerserPlugin压缩bundle
     minimize: true,
