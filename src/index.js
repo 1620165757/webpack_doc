@@ -1,16 +1,6 @@
-// import _ from 'lodash'
-import './other/css/test.css';
-import {name} from 'webpackTest';
-import test from "otherJs/test";
+import ('react');
 
-function component() {
-  console.log('name',name);
-  const btn = document.createElement('button');
-  // import('./test.ts').then();
+// import ('lodash');
+// import ('jquery');
+// import ('./main');
 
-  btn.innerHTML = 'stop work1111';
-
-  return btn;
-}
-
-document.body.appendChild(component());

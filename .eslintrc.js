@@ -10,7 +10,7 @@ module.exports = {
   rules: {
     "indent": ["warn", 2],
     //行末分号
-    "semi": ["warn", "always"],
+    // "semi": ["warn", "always"],
     "arrow-parens": 0
   }
 };

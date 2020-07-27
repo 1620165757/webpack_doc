@@ -1,19 +1,21 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-  // mode: 'development',
-  mode: 'production',
+  mode: 'development',
+  // mode: 'production',
   entry: {
     index: './src/index.js',
-    // test: './src/test.ts'
+    // main: './src/main.js'
   },
   devtool: false,
   output: {
-    filename: '[name].filename.[chunkhash].js',
-    chunkFilename: '[name].chunkFilename.[chunkhash].js',
+    filename: '[name].[chunkhash].js',
+    // chunkFilename: '[name].chunkFilename.[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -56,6 +58,7 @@ const config: webpack.Configuration = {
       title: '渐进式网络应用程序'
     }),
     new CleanWebpackPlugin(['dist']),
+    // new BundleAnalyzerPlugin()
   ],
   resolve: {
     alias: {
@@ -64,9 +67,36 @@ const config: webpack.Configuration = {
     descriptionFiles: ['package.json'],
     enforceExtension: false,
     extensions: ['.wasm', '.mjs', '.js', '.json', '.ts'],
-    mainFields: ['browser', 'module', 'main','webpackMain'],
-    // mainFiles: ['index.js','init.js']
+    mainFields: ['browser', 'module', 'main', 'webpackMain'],
     modules: ['node_modules']
+  },
+  optimization: {
+    //是否启用TerserPlugin压缩bundle
+    minimize: true,
+    runtimeChunk: 'single',
+    chunkIds: 'named',
+    nodeEnv: 'production1',
+    removeAvailableModules: true,
+    splitChunks: {
+      chunks: 'all',
+      maxAsyncRequests: 2,
+      // cacheGroups: {
+      //   common: {
+      //     chunks: 'initial',
+      //     name: 'common_chunk',
+      //     test: /node_modules/,
+      //     minSize: 0,
+      //     minChunks: 1
+      //   },
+      //   asyncCommon: {
+      //     chunks: 'async',
+      //     name: 'async_common_chunk',
+      //     test: /node_modules/,
+      //     minSize: 0,
+      //     minChunks: 1
+      //   }
+      // },
+    }
   }
   // optimization: {
   //   splitChunks: {
