@@ -5,39 +5,25 @@ import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
   mode: 'development',
-  entry: {
-    index: './src/index.js',
-    // test: './src/test.ts'
-  },
-  devtool: 'cheap-module-source-map',
+  target: "web",
+  entry: './src/index.js',
   output: {
-    filename: '[name].filename.[chunkhash].js',
-    chunkFilename: '[name].chunkFilename.[chunkhash].js',
-    path: path.resolve(__dirname, 'dist'),
+    //输出目录
+    path: path.resolve(__dirname, 'wwwroot'),
+    filename: 'index.bundle.js',
+    //在使用[hash]命名时使用的编码方式，默认hex
+    hashDigest: 'hex',
+    //[hash]的长度
+    hashDigestLength: 20,
+    //输出目录和开发目录的结构不同，通过设置publicPath解决问题
+    // publicPath
   },
-  // module: {
-  //   rules: [{
-  //     test: /\.css$/,
-  //     use: ['style-loader', 'css-loader']
-  //   }]
-  // },
   plugins: [
     new HtmlWebpackPlugin({
       title: '渐进式网络应用程序'
     }),
     new CleanWebpackPlugin(['dist']),
-    // new webpack.ProvidePlugin({
-    //   join: ['lodash', 'join']
-    // })
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-    runtimeChunk: {
-      name: entrypoint => `runtime-${entrypoint.name}`,
-    },
-  }
 };
 
 export default config
