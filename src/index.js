@@ -1,2 +1,6 @@
-import React from 'react'
-console.log('11111');
+import {str} from './a'
+import './index.css'
+const func = ()=>{
+    console.log(str);
+};
+func();
