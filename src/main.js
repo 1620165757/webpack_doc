@@ -1,4 +1,3 @@
-// import ('react');
-// import ('lodash');
-// import 'jquery';
-console.log('main_123');
+const count = 111
+
+export default count
